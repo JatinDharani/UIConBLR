@@ -1,0 +1,128 @@
+{
+	"_version": "1.7.0",
+	"sap.app": {
+		"id": "com.jatinUI5Con",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/NorthwindService/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+
+		]
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.jatinUI5Con.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.jatinUI5Con.i18n.i18n"
+				}
+			},
+			
+			"": {
+				"dataSource": "mainService",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+			"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "com.jatinUI5Con.view",
+				"controlId": "Container",
+				"controlAggregation": "detailPages"
+			},
+			"routes": [{
+				"name": "Main",
+				"pattern": "",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["Detail","Main"]
+			}, {
+				"name": "Detail",
+				"pattern": "detail/{productID}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["Main","Detail"]
+			}],
+			"targets": {
+				"Main": {
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Main",
+					"viewLevel": 1,
+					"controlAggregation": "masterPages"
+				},
+				"Detail": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Detail",
+					"viewLevel": 2
+				}
+			}
+		}
+	}
+}

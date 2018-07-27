@@ -1,0 +1,141 @@
+<core:View xmlns:core="sap.ui.core"
+		   xmlns="sap.uxap"
+		   xmlns:layout="sap.ui.layout"
+		   xmlns:m="sap.m"
+		  
+		   xmlns:employment="sap.uxap.sample.SharedBlocks.employment"
+		  controllerName="com.jatinUI5Con.controller.Detail"
+		   height="100%">
+	<ObjectPageLayout id="ObjectPageLayout"
+					  enableLazyLoading="false"
+					  showTitleInHeaderContent="false"
+					  showEditHeaderButton="false"
+					 >
+		<headerTitle  >
+			<ObjectPageHeader id="objectHeader"
+							  objectTitle="{ProductName}"
+							  
+							  
+							  
+							  objectImageShape="Circle"
+							  isObjectIconAlwaysVisible="true"
+							  isObjectTitleAlwaysVisible="true"
+							  isObjectSubtitleAlwaysVisible="true">
+				<actions>
+				
+				</actions>
+				
+			</ObjectPageHeader>
+		</headerTitle>
+
+		<headerContent>
+		
+<layout:VerticalLayout>
+				<m:VBox id="catDesc">
+					<m:items>
+						<m:Text text="{Description}"/>
+						<m:Image src="data:image/png;base64,{Picture}" ></m:Image>
+					</m:items>
+				</m:VBox>
+			</layout:VerticalLayout>
+
+		
+		</headerContent>
+
+		<sections>
+			<ObjectPageSection title="Categories">
+				<subSections>
+				<ObjectPageSubSection  title="Categories">
+						<blocks>
+						
+	
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection title="Order Details" importance="Medium">
+				<subSections>
+				<ObjectPageSubSection  title="Order Details">
+						<blocks>
+							<m:Table 
+		inset="false"
+		items="{
+			path: 'Order_Details',
+			sorter: {
+				path: 'OrderID'
+			}
+		}">
+		<m:headerToolbar>
+			<m:Toolbar>
+				<m:content>
+					<m:Title text="Order Details" level="H2"/>
+					<m:ToolbarSpacer />
+				
+					
+				</m:content>
+			</m:Toolbar>
+		</m:headerToolbar>
+		<m:columns>
+			<m:Column
+				width="12em">
+				<m:Text text="OrderID" />
+			</m:Column>
+			<m:Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<m:Text text="ProductID" />
+			</m:Column>
+			<m:Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="End">
+				<m:Text text="UnitPrice" />
+			</m:Column>
+			<m:Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<m:Text text="Quantity" />
+			</m:Column>
+			<m:Column
+				hAlign="End">
+				<m:Text text="Discount" />
+			</m:Column>
+		
+		</m:columns>
+		<m:items>
+			<m:ColumnListItem>
+				<m:cells>
+					<m:Link
+						text="{OrderID}"
+					press="onOrderPress"/>
+					<m:Text
+						text="{ProductID}" />
+					<m:Text
+						text="{UnitPrice}" />
+					
+			
+							<m:ObjectNumber
+						number="{Quantity}"
+						unit="{WeightUnit}"
+						state="{=${Quantity} > 10 ?'Success' : 'Warning'}" />
+						<m:Text
+						text="{Discount}" />
+						
+				</m:cells>
+			</m:ColumnListItem>
+		</m:items>
+	</m:Table>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+		
+		</sections>
+		<footer>
+		
+		</footer>
+	</ObjectPageLayout>
+</core:View>

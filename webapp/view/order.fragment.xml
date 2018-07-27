@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		title="{CustomerID}"
+		class="sapUiPopupWithPadding"
+		placement="Right"
+		initialFocus="action">
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button
+				
+					text="Close"
+					press="handleActionPress" />
+			</Toolbar>
+		</footer>
+		<VBox>
+		<Title text="Order ID:   {OrderID}" />
+			<Text text="Freight:  {Freight}" />
+		<Text text="Address :   {ShipAddress}" />
+			<Text text="Ship Name:  {ShipName}" />
+			<Text text="Ship Name:  {ShipName}" />
+			
+			<Text text="City:  {ShipCity}" />
+				<Text text="City:  {ShipCountry}" />
+			
+			
+		</VBox>
+	</Popover>
+</core:FragmentDefinition>
